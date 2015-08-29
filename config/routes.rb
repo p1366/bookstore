@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     # post '/order', to: 'orders#create'
     # resource :order, only: :create
 
-    # POST /api/v1/shops/1/order book_id=1 quantity=1
+    # POST /api/v1/shops/1/order book_id=1 copies=1
     # post '/shops/:shop_id/order', to: 'orders#create'
     resources :shops, only: [] do
       resource :order, only: :create

@@ -6,7 +6,7 @@ class PublishersController < ApplicationController
   private
 
   def publisher
-    # Let AR to check Publisher id
+    # Let AR check Publisher id
     Publisher.find(params[:id])
   end
 end
