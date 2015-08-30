@@ -18,16 +18,21 @@ shop1 = Shop.create(name: '1st Shop')
 shop2 = Shop.create(name: '2st Shop')
 shop3 = Shop.create(name: '3st Shop')
 
-Product.create(shop: shop1, book: book1, copies_in_stock: 1, copies_sold: 1)
-Product.create(shop: shop1, book: book2, copies_in_stock: 2, copies_sold: 2)
-Product.create(shop: shop2, book: book1, copies_in_stock: 3, copies_sold: 0)
-Product.create(shop: shop2, book: book2, copies_in_stock: 4, copies_sold: 0)
-Product.create(shop: shop3, book: book1, copies_in_stock: 5, copies_sold: 3)
-Product.create(shop: shop3, book: book2, copies_in_stock: 6, copies_sold: 4)
+book_world = [
+  #   publisher1      publisher2
+  # book1   book2   book3   book4
+  [ [1, 3], [2, 4], [1, 0], [2, 0] ], # shop1
+  [ [3, 0], [4, 0], [3, 1], [4, 2] ], # shop2
+  [ [5, 1], [6, 2], [5, 4], [6, 0] ], # shop3
+  # [copies_in_stock, copies_sold]
+]
 
-Product.create(shop: shop1, book: book3, copies_in_stock: 1, copies_sold: 0)
-Product.create(shop: shop1, book: book4, copies_in_stock: 2, copies_sold: 0)
-Product.create(shop: shop2, book: book3, copies_in_stock: 3, copies_sold: 1)
-Product.create(shop: shop2, book: book4, copies_in_stock: 4, copies_sold: 2)
-Product.create(shop: shop3, book: book3, copies_in_stock: 5, copies_sold: 4)
-Product.create(shop: shop3, book: book4, copies_in_stock: 6, copies_sold: 0)
+shops = [shop1, shop2, shop3]
+books = [book1, book2, book3, book4]
+book_world.each_with_index do |row, shop_i|
+  shop = shops[shop_i]
+  row.each_with_index do |product, book_i|
+    book = books[book_i]
+    Product.create(shop: shop, book: book, copies_in_stock: product.first, copies_sold: product.last)
+  end
+end
