@@ -5,10 +5,12 @@ gem 'rails', '4.2.1'
 
 gem 'rails-api'
 
-gem 'spring', :group => :development
-
-
 gem 'pg'
+gem 'active_model_serializers'
+
+group :development do
+  gem 'spring'
+end
 
 group :development, :test do
   gem 'pry'
