@@ -1,6 +1,6 @@
 RSpec.describe OrdersController, type: :controller do
   describe 'POST create' do
-    COPIES = 5
+    # see copies_in_stock.rb
     let(:product) { create :product, copies_in_stock: COPIES }
 
     shared_examples 'sell copies and get status:' do |copies, status|

@@ -1,6 +1,6 @@
 RSpec.describe PublishersController, type: :controller do
   describe 'GET shops' do
-    COPIES = 5
+    # see copies_in_stock.rb
     let(:product) { create :product, copies_in_stock: COPIES }
 
     context 'positive' do

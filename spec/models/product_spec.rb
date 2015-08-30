@@ -11,7 +11,7 @@ RSpec.describe Product, type: :model do
 
   describe '#sell' do
     context 'naive' do
-      COPIES = 5
+      # see copies_in_stock.rb
       let(:product) { create :product, copies_in_stock: COPIES }
 
       context 'positive' do
