@@ -1,5 +1,4 @@
 RSpec.describe PgJsonService do
-  subject { PgJsonService }
   describe '#json' do
     shared_examples 'empty shops' do
       it 'should return shops key with empty array' do
@@ -11,7 +10,7 @@ RSpec.describe PgJsonService do
 
     context 'no products at all' do
       let(:json) do
-        JSON.parse(subject.new(create(:publisher).id).json)
+        JSON.parse(described_class.new(create(:publisher).id).json)
       end
 
       include_examples 'empty shops'
@@ -19,7 +18,7 @@ RSpec.describe PgJsonService do
 
     context 'no sales at all' do
       let(:json) do
-        JSON.parse(subject.new(create(:product).book.publisher.id).json)
+        JSON.parse(described_class.new(create(:product).book.publisher.id).json)
       end
 
       include_examples 'empty shops'
@@ -30,7 +29,7 @@ RSpec.describe PgJsonService do
         product = create :product, copies_sold: 1
         book = create :book                             # another publisher created
         create :product, shop: product.shop, book: book # copies_sold: 0 in same shop
-        JSON.parse(subject.new(book.publisher.id).json)
+        JSON.parse(described_class.new(book.publisher.id).json)
       end
 
       include_examples 'empty shops'
@@ -70,8 +69,8 @@ RSpec.describe PgJsonService do
         end
       end
 
-      let(:json1) { JSON.parse(subject.new(publisher1.id).json) }
-      # let(:json2) { JSON.parse(subject.new(publisher2.id).json) }
+      let(:json1) { JSON.parse(described_class.new(publisher1.id).json) }
+      # let(:json2) { JSON.parse(described_class.new(publisher2.id).json) }
 
       let(:right1) { {
         'shops' => [
