@@ -2,9 +2,7 @@ RSpec.describe PgJsonService do
   describe '#json' do
     shared_examples 'empty shops' do
       it 'should return shops key with empty array' do
-        expect(json.keys.count).to eq(1)
-        expect(json.keys.first).to eq('shops')
-        expect(json['shops']).to eq([])
+        expect(json).to match({ 'shops' => [] })
       end
     end
 
