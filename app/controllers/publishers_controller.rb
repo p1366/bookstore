@@ -1,6 +1,6 @@
 class PublishersController < ApplicationController
   def shops
-    render json: ArPreloadService.new(publisher.id).shops, root: 'shops'
+    render json: PgJsonService.new(publisher.id).json
   end
 
   private
