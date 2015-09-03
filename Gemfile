@@ -21,4 +21,6 @@ group :development, :test do
   gem 'database_cleaner'
 
   gem 'shoulda-matchers', require: false
+
+  gem 'fork_break'
 end
