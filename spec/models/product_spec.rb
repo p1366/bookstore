@@ -60,4 +60,8 @@ RSpec.describe Product, type: :model do
       end
     end
   end
+
+  context 'concurrent' do
+    # TODO: implement lock testing with fork_break gem
+  end
 end
